@@ -37,79 +37,174 @@
     
     <div class="container theme-showcase" role="main">
 
-      <!-- Jumbotron con titulo -->
-      <div class="jumbotron">
-        <h1>Estudiantes de Ciencia de C&oacute;mputos</h1>
-        <p>Aqu&iacute; se maneja la informaci&oacute;n de los estudiantes que estan en ciencia de c&oacute;mputos y tambi&eacute;n puedes ver los proyectos de 
-		investigaci&oacute;n.</p>
-        
-      </div>
-	  <!-- Boton donde se entra el nombre -->
-    
-	<!-- <p style="text-align:center"> -->
-	<!-- <div class="row">
-		<form>  
-		
-				<div style="text-align:center" class="col-xs-6">
-				<input label="first"> </input>
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					Buscar por <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Numero de estudiante</a></li>
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/tryNewButtonsHere.html">Nombre de estudiante</a></li>
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/tryNewButtonsHere.html">Nombre de profesor</a></li>
-					</ul>
-				</div>
-		<form>
-		<form>  
+		  <!-- Jumbotron con titulo -->
+		  <div class="jumbotron">
+			<h1>Estudiantes de Ciencia de C&oacute;mputos</h1>
+			<p>Aqu&iacute; se maneja la informaci&oacute;n de los estudiantes que estan en ciencia de c&oacute;mputos y tambi&eacute;n puedes ver los proyectos de 
+			investigaci&oacute;n.</p>
 			
-				<div style="text-align:center"class="col-xs-6">
-				<input label="Second"> </input>
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-					Ingresar <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Estudiante</a></li>
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/tryNewButtonsHere.html">Profesor</a></li>
-						
-					</ul>
-				</div>
-			
-		<form>
-	</div> -->
+		  </div>
+	  </div>
+	  
    <!-- The true menu  --> 
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Buscar por <span class="caret"></span></button>
-					<ul class="dropdown-menu pull-right">
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.html">N&uacute;mero de estudiante</a></li>
-						<li class="divider"></li>
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Nombre de estudiante</a></li>
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/tryNewButtonsHere.html">Nombre de profesor</a></li>
-					</ul>
-				</div><!-- /btn-group -->
-			</div><!-- /input-group -->
-		</div><!-- /.col-lg-6 -->
-		<div class="col-lg-6">
-			<div class="input-group">
-				<input type="text" class="form-control">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> Ingresar <span class="caret"></span></button>
-					<ul class="dropdown-menu pull-right">
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Estudiante</a></li>
-						<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/tryNewButtonsHere.html">Profesor</a></li>
-						
-					</ul>
-				</div><!-- /btn-group -->
-			</div><!-- /input-group -->
-		</div><!-- /.col-lg-6 -->
-	</div><!-- /.row -->
+   <div class='container'>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="input-group">
+					<input type="text" class="form-control" id="StudentNum" placeholder="Numero de estudiante">
+					<div class="input-group-btn">
+						<a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.html">
+						<button type="button" class="btn btn-primary">Buscar </button>
+						</a>	
+					</div><!-- /btn-group -->
+				</div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+			<div class="col-lg-6">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Nombre">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-primary" data-toggle="dropdown"> Buscar por <span class="caret"></span></button>
+						<ul class="dropdown-menu pull-right">
+							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Estudiante</a></li>
+							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/tryNewButtonsHere.html">Profesor</a></li>
+							
+						</ul>
+					</div><!-- /btn-group -->
+				</div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
+	</div>
+	
+	<div class="container" style='position:relative;bottom:-10px;'>
+		<div class="row">
+			<div class="col-md-4"></div> <!-- Useless -->
+			<div class="col-md-4">
+				<div class="btn-group btn-group-justified">
+					 <a class="btn btn-info" role="button" data-toggle="modal" data-target="#ModalEst">Ingresar Estudiante</a>
+					 
+					 <a class="btn btn-info" role="button" data-toggle="modal" data-target="#ModalProf">Ingresar Profesor</a>
+				</div>
+
+			</div> <!-- where it ends -->
+			<div class="col-md-4"></div> <!-- Also Useless -->
+		</div>
+	</div>
+
+	<!-- modal Estudiantes-->
+
+      <div class="modal fade" id="ModalEst" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">A&ntilde;adir Estudiante</h3>
+            </div>
+            <div class="modal-body">
+               <form class="form-signin">
+                  <!-- Nombre box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="Nombre del estudiante">
+                  </div>
+
+                  <!-- Numest box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante">
+                  </div>
 
 
+                  <!-- Correo box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
+                  </div>
+
+
+                  <!-- Telefono box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Tel&eacute;fono">
+                  </div>
+
+                  <!-- Año box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="A&ntilde;o">
+                  </div>
+
+                  <!-- Fecha de Admision box -->
+                  <!--<div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Curso Actual">
+                  </div>
+
+                  <!-- Fecha de Graduaci?n box -->
+                  <!--<div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Identificaci?n del Maestro">
+                  </div>-->
+               </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- modal Profesores-->
+
+      <div class="modal fade" id="ModalProf" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">A&ntilde;adir Estudiante</h3>
+            </div>
+            <div class="modal-body">
+               <form class="form-signin">
+                  <!-- Nombre box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="Nombre del estudiante">
+                  </div>
+
+                  <!-- Numest box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante">
+                  </div>
+
+
+                  <!-- Correo box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
+                  </div>
+
+
+                  <!-- Telefono box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Tel&eacute;fono">
+                  </div>
+
+                  <!-- Año box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="A&ntilde;o">
+                  </div>
+
+                  <!-- Fecha de Admision box -->
+                  <!--<div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Curso Actual">
+                  </div>
+
+                  <!-- Fecha de Graduaci?n box -->
+                  <!--<div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Identificaci?n del Maestro">
+                  </div>-->
+               </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- /container y fin de modal prof-->
+	
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
