@@ -1,3 +1,14 @@
+<?php 
+$host = "localhost";
+$usuario = "dramirez2";
+$password = "turntablepower2";
+$database = "estu_investigacion";
+
+$conexion = mysql_connect($host, $usuario, $password);
+mysql_select_DB($database);
+$sql_nombres="select * from Estudiantes";
+$nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -54,7 +65,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="StudentNum" placeholder="Numero de estudiante">
 					<div class="input-group-btn">
-						<a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.html">
+						<a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php">
 						<button type="button" class="btn btn-primary">Buscar </button>
 						</a>	
 					</div><!-- /btn-group -->
@@ -66,8 +77,8 @@
 					<div class="input-group-btn">
 						<button type="button" class="btn btn-primary" data-toggle="dropdown"> Buscar por <span class="caret"></span></button>
 						<ul class="dropdown-menu pull-right">
-							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Estudiante</a></li>
-							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html">Profesor</a></li>
+							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.php">Estudiante</a></li>
+							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.php">Profesor</a></li>
 							
 						</ul>
 					</div><!-- /btn-group -->
@@ -287,7 +298,7 @@
         </div>
       </div>
      <!-- /container y fin de modal prof-->
-	
+	 
 	
     <!-- Bootstrap core JavaScript
     ================================================== -->
