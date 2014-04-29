@@ -37,13 +37,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Informaci&oacute;n</a>
+          <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.html">Inicio</a>
         </div>
         <div class="navbar-collapse collapse">
            <form class="navbar-form navbar-right" role="form">
-				<a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.html"> 
-					<button type="button" class="btn btn-success">Actualizar</button> 
-				</a>
+				
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEst">Actualizar</button> 
+				
         </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -52,8 +52,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <h1>Nombre de etudiante iria aqui</h1>
+        <p>Esta es la pagina que contiene a los estudiantes y alomejor a los profesores, depende de la funcionalidad</p>
         <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
       </div>
     </div>
@@ -62,8 +62,8 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <h2>Una consideracion</h2>
+          <p>Tendria una lista con las clases de CCOM</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
@@ -85,7 +85,129 @@
       </footer>
     </div> <!-- /container -->
 
+<!-- modal Estudiantes-->
 
+      <div class="modal fade" id="ModalEst" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">Actualizar Estudiante</h3>
+            </div>
+            <div class="modal-body">
+               <form class="form-signin">
+                  <!-- Nombre box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="Nombre del estudiante">
+                  </div>
+
+                  <!-- Numest box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante">
+                  </div>
+
+
+                  <!-- Correo box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
+                  </div>
+
+
+                  <!-- Telefono box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Tel&eacute;fono">
+                  </div>
+
+                  <!-- Año box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="A&ntilde;o">
+                  </div>
+				  <!-- Cursos CCOM -->
+				 <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Cursos de CCOM:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <form class="form-signin">
+                          <!-- Codigo box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Codigo del Curso">
+                         </div>
+
+                         <!-- Titulo box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"     placeholder="Titulo del Curso">
+                         </div>
+
+                          <!-- Descripcion box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
+                         </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- Proyectos de investigacion-->
+                  <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <form class="form-signin">
+                          <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
+                         </div>
+
+                         <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"     placeholder="ID de la Investigaci&oacute;n">
+                         </div>
+
+                          <!-- Descripcion Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n">
+                         </div>
+                        
+                          <!-- Producto box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n">
+                         </div>
+
+                         <!-- Profesor Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Profesores de la Investigaci&oacute;n">
+                         </div>
+                         
+                         <!-- Compañeros Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n">
+                         </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  <!-- Fecha de Admision box -->
+                  <!--<div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Curso Actual">
+                  </div>
+
+                  <!-- Fecha de Graduaci?n box -->
+                  <!--<div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Identificaci?n del Maestro">
+                  </div>-->
+               </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

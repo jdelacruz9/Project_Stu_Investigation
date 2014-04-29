@@ -38,29 +38,60 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.html">CCOM STU</a>
+          <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.html">Inicio</a>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+        
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style='position:relative;bottom:-100px;'>
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h1>Lista de nombres</h1>
+        
       </div>
 
     </div><!-- /.container -->
-    <!-- modal Maestros -->
+   
+      
+<div class='container' style='position:relative;bottom:-100px;'>
+<div class="bs-example">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Daniel</td>
+          <td>Ramirez</td>
+          
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ivan</td>
+          <td>Jimenez</td>
+         
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Ivelisse</td>
+          <td>Rubio</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  
+  <!-- modal Estudiantes-->
 
-      <div class="modal fade" id="myModalM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="ModalEst" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -76,27 +107,93 @@
 
                   <!-- Numest box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="Numero de Estudiante">
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante">
                   </div>
 
 
                   <!-- Correo box -->
-<<<<<<< HEAD
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Correo electr?nico">
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
                   </div>
 
 
                   <!-- Telefono box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Tel?fono">
+                    <input type="text" class="form-control" placeholder="Tel&eacute;fono">
                   </div>
 
-                  <!-- A?o box -->
+                  <!-- Año box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="A?o">
+                    <input type="text" class="form-control" placeholder="A&ntilde;o">
                   </div>
+				  <!-- Cursos CCOM -->
+				 <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Cursos de CCOM:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <form class="form-signin">
+                          <!-- Codigo box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Codigo del Curso">
+                         </div>
 
+                         <!-- Titulo box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"     placeholder="Titulo del Curso">
+                         </div>
+
+                          <!-- Descripcion box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
+                         </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- Proyectos de investigacion-->
+                  <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <form class="form-signin">
+                          <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
+                         </div>
+
+                         <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"     placeholder="ID de la Investigaci&oacute;n">
+                         </div>
+
+                          <!-- Descripcion Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n">
+                         </div>
+                        
+                          <!-- Producto box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n">
+                         </div>
+
+                         <!-- Profesor Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Profesores de la Investigaci&oacute;n">
+                         </div>
+                         
+                         <!-- Compañeros Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n">
+                         </div>
+
+                        </div>
+                      </div>
+                    </div>
                   <!-- Fecha de Admision box -->
                   <!--<div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Curso Actual">
@@ -105,31 +202,6 @@
                   <!-- Fecha de Graduaci?n box -->
                   <!--<div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Identificaci?n del Maestro">
-=======
-                  <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Correo electrónico">
-                  </div>
-
-
-                  <!-- Telefono box -->
-                  <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Teléfono">
-                  </div>
-
-                  <!-- Año box -->
-                  <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Año">
-                  </div>
-
-                  <!-- Fecha de Admision box -->
-                  <!--<div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Curso Actual">
-                  </div>
-
-                  <!-- Fecha de Graduación box -->
-                  <!--<div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Identificación del Maestro">
->>>>>>> bb4c06e4003a9172a6bcbca4e2ca529cd856439e
                   </div>-->
                </form>
             </div>
@@ -140,32 +212,6 @@
           </div>
         </div>
       </div>
-    
-<<<<<<< HEAD
-    </div><!-- /container -->
-	
-=======
-    </div> <!-- /container -->
-<<<<<<< HEAD
-  <div class="col-md-2 col-md-offset-2">
-            <div class="btn-group" id="botonE">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalM">
-                Añadir Estudiante
-              </button>
-            </div>
-          </div>
-
-=======
->>>>>>> bb4c06e4003a9172a6bcbca4e2ca529cd856439e
-	<div class="col-md-2 col-md-offset-2">
-						<div class="btn-group" id="botonE">
-					 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalM">
-					 			Añadir Estudiante
-					 		</button>
-					 	</div>
-					</div>
-	
->>>>>>> ae5d5811224437fa3f403e4bc4ec735dc7552301
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
