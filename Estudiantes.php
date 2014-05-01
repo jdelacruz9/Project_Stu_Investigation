@@ -7,9 +7,9 @@ $database = "estu_investigacion";
 $conexion = mysql_connect($host, $usuario, $password);
 mysql_select_DB($database);
 
-$name=$_POST['Nombre'];
+$name=$_POST['NombreStu'];
 
-$sql_nombres='select * from Estudiantes where nombre like "'.$name.'%";';
+$sql_nombres='select * from Estudiantes where nombre like "%'.$name.'%";';
 $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
 ?>
 <!DOCTYPE html>
@@ -60,7 +60,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
     <div class="container" style='position:relative;bottom:-100px;'>
 
       <div class="starter-template">
-        <h1>Lista de nombres <?php echo $name; ?></h1>
+        <h1>Lista de nombres </h1>
         
       </div>
 
@@ -72,28 +72,21 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
 				<table class="table table-bordered">
 				  <thead>
 					<tr>
-					  
-					  <th>ID</th>
+			
 					  <th>Nombre</th>
 					  <th>Email</th>
-					  <th>Telefono</th>
-					  <th>A&ntilde;o</th>
-					  <th>Clasificado CCOM</th>
+					  <th>ID</th>
 					</tr>
 				  </thead>
 				  <tbody>
 	<?php 
 		while($row = mysql_fetch_row($nombre_res)){
 			echo  "<tr>";
-					echo "<td>".$row[0]."</td>";
 					echo "<td>".$row[1]."</td>";
 					echo "<td>".$row[2]."</td>";
-					echo "<td>".$row[3]."</td>";
-					echo "<td>".$row[4]."</td>";
-					if ($row[5] == 1){
-						echo "<td>S&iacute;</td>";
-					}
-					else  echo "<td>No</td>";
+					echo "<td>".$row[0]."</td>";
+	
+					
 			echo "</tr>";
 	
 		}

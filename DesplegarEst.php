@@ -6,8 +6,11 @@ $database = "estu_investigacion";
 
 $conexion = mysql_connect($host, $usuario, $password);
 mysql_select_DB($database);
-$sql_nombres="select * from Estudiantes";
-$nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
+$numEst =$_POST['NumStu']; 
+$sql_id='select * from Estudiantes where est_id ="'.$numEst.'";';
+$id_res= mysql_query($sql_id); //no devuelve el valor, es un pointer
+$row = mysql_fetch_row($id_res); 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,12 +66,64 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Nombre de etudiante iria aqui</h1>
-        <p>Esta es la pagina que contiene a los estudiantes y alomejor a los profesores, depende de la funcionalidad</p>
+       <?php 
+		if ($row[1] == null) echo "<h1> El estudiante que buscas no est&aacute; en la base de datos.</h1></div></div>";
+		else{ echo '<h1>'.$row[1];
+		echo (
+		'</h1>
+        <table class="table">
+      <thead>
+        <tr>
+          <th>Correo Electr&oacute;nico</th>
+		  <th>N&uacute;mero de Estudiante</th>
+          <th>Telefono</th>
+          <th>A&ntilde;o</th>
+          <th>Classificado en CCOM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>'.$row[2].'</td>
+          <td>');
+		  //Despliega numero de estudiante con guiones
+		  for ($i=0; $i < strlen($row[0]); $i++){
+			if ($i== 2 or $i== 4) echo $row[0][$i].'-';
+			else echo $row[0][$i];
+		  }
+		  
+		  
+		  echo ('</td>
+          <td>');
+		  for ($i=0; $i < strlen($row[3]); $i++){
+			if ($i== 2 or $i== 5) echo $row[3][$i].'-';
+			else echo $row[3][$i];
+		  }
+		  echo ('</td> <td>');
+			switch ($row[4]){
+				case 1: echo "Primer A&ntilde;o";
+						break;
+				case 2: echo "Segundo A&ntilde;o";
+						break;
+				case 3: echo "Tercer A&ntilde;o";
+						break;
+				case 4: echo "Cuarto A&ntilde;o";
+						break;
+				default: echo $row[4];
+			}
+		  echo ('</td>
+		  <td>');
+			if ($row[5] == 1) echo "S&iacute";
+			else echo "No";
+		   echo ('</td>
+        </tr>
+      </tbody>
+    </table>
         
       </div>
-    </div>
+    </div>');
+	}
 
+?>
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
@@ -79,7 +134,9 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
         </div>
         <div class="col-md-6">
           <h2>Investigacion</h2>
-            Aqui iria la info de la investigacion
+		 <p> Esta working?
+            
+		</p>
        </div>
         
       </div>

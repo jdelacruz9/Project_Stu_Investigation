@@ -61,26 +61,39 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
    <!-- The true menu  --> 
    <div class='container'>
 		<div class="row">
-			<div class="col-lg-6">
+		<form action="DesplegarEst.php" method="POST">
+			<div class="col-lg-4">
 				<div class="input-group">
-					<input type="text" class="form-control" id="StudentNum" placeholder="Numero de estudiante">
-					<div class="input-group-btn">
-						<a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php">
-						<button type="button" class="btn btn-primary">Buscar </button>
-						</a>	
+					<input type="text" class="form-control"  placeholder="Numero de estudiante" name="NumStu">
+					<div class="input-group-btn" value="submit">
+						<button type="submit" value="submit"  class="btn btn-primary"> Buscar </button>
 					</div><!-- /btn-group -->
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
+		</form>
 			<form action="Estudiantes.php" method="POST">
-			<div class="col-lg-6">
+			<div class="col-lg-4">
 			    
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Nombre" name="Nombre">
+					<input type="text" class="form-control" placeholder="Nombre del Estudiante" name="NombreStu">
 					<div class="input-group-btn" value="submit">
-						<button type="button" value="submit"  class="btn btn-primary" data-toggle="dropdown"> Estudiante</button>
-						
+						<button type="submit" value="submit"  class="btn btn-primary"> Buscar </button>
 					</div><!-- /btn-group -->
 				</div><!-- /input-group -->
+				
+			</div><!-- /.col-lg-6 -->
+			</form>
+			<form action="Profe.php" method="POST">
+			<div class="col-lg-4">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Nombre del Profesor" name="NombreProf">
+					<div class="input-group-btn" value="submit">
+						<button type="submit" value="submit"  class="btn btn-primary"> Buscar </button>
+			
+					</div><!-- /btn-group -->
+				</div><!-- /input-group -->
+				
+			</div><!-- /.col-lg-6 -->
 				
 			</div><!-- /.col-lg-6 -->
 			</form>
