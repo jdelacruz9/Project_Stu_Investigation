@@ -71,19 +71,19 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
 					</div><!-- /btn-group -->
 				</div><!-- /input-group -->
 			</div><!-- /.col-lg-6 -->
+			<form action="Estudiantes.php" method="POST">
 			<div class="col-lg-6">
+			    
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Nombre">
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-primary" data-toggle="dropdown"> Buscar por <span class="caret"></span></button>
-						<ul class="dropdown-menu pull-right">
-							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.php">Estudiante</a></li>
-							<li><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/Estudiantes.php">Profesor</a></li>
-							
-						</ul>
+					<input type="text" class="form-control" placeholder="Nombre" name="Nombre">
+					<div class="input-group-btn" value="submit">
+						<button type="button" value="submit"  class="btn btn-primary" data-toggle="dropdown"> Estudiante</button>
+						
 					</div><!-- /btn-group -->
 				</div><!-- /input-group -->
+				
 			</div><!-- /.col-lg-6 -->
+			</form>
 		</div><!-- /.row -->
 	</div>
 	
