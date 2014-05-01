@@ -9,7 +9,7 @@ mysql_select_DB($database);
 
 $name=$_POST['NombreProf'];
 
-$sql_nombres='select * from Profesor where nombre like "'.$name.'%";';
+$sql_nombres='select * from Profesor where nombre like "%'.$name.'%";';
 $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
 ?>
 <!DOCTYPE html>

@@ -61,7 +61,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
    <!-- The true menu  --> 
    <div class='container'>
 		<div class="row">
-		<form action="DesplegarEst.php" method="POST">
+		<form action="ID.php" method="POST">
 			<div class="col-lg-4">
 				<div class="input-group">
 					<input type="text" class="form-control"  placeholder="Numero de estudiante" name="NumStu">
@@ -119,39 +119,49 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
 
       <div class="modal fade" id="ModalEst" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
+		<form action="processmodal.php" method="POST">
           <div class="modal-content">
+		  
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               <h3 class="modal-title" id="myModalLabel">A&ntilde;adir Estudiante</h3>
-            </div>
+            </div> 
+			
+		
             <div class="modal-body">
-               <form class="form-signin">
+               
                   <!-- Nombre box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="Nombre del estudiante">
+                    <input type="text" class="form-control" placeholder="Nombre del estudiante" name="ModNStu">
                   </div>
 
                   <!-- Numest box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante">
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante" name="ModIDStu">
                   </div>
 
 
                   <!-- Correo box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" name="ModEStu">
                   </div>
 
 
                   <!-- Telefono box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Tel&eacute;fono">
+                    <input type="text" class="form-control" placeholder="Tel&eacute;fono" name="ModTStu">
                   </div>
 
                   <!-- Año box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="A&ntilde;o">
+                    <input type="text" class="form-control" placeholder="A&ntilde;o" name="ModAStu">
                   </div>
+				  
+				   <!-- Classificado box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Classificado CCOM" name="ModCCStu">
+                  </div>
+				 
 				  <!-- Cursos CCOM -->
 				 <div>
                     <div> <p></p><p></p><p></p><p></p></div>
@@ -160,7 +170,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                         <h3 class="panel-title">Cursos de CCOM:</h3>
                       </div>
                       <div class="panel-body">                  
-                         <form class="form-signin">
+                         
                           <!-- Codigo box -->
                          <div class="row" id="input-pass" >
                             <input type="text" class="form-control" placeholder="Codigo del Curso">
@@ -175,6 +185,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                          <div class="row" id="input-pass"> 
                            <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
                          </div>
+						 
                         </div>
                       </div>
                     </div>
@@ -186,7 +197,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                         <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
                       </div>
                       <div class="panel-body">                  
-                         <form class="form-signin">
+                         
                           <!-- Titulo Inv box -->
                          <div class="row" id="input-pass" >
                             <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
@@ -216,7 +227,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                          <div class="row" id="input-pass"> 
                            <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n">
                          </div>
-
+						
                         </div>
                       </div>
                     </div>
@@ -229,17 +240,20 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                   <!--<div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Identificaci?n del Maestro">
                   </div>-->
-               </form>
+              
             </div>
+		
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Aceptar</button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
             </div>
+			
           </div>
+		  </form>
         </div>
       </div>
     <!-- modal Profesores-->
-
+	<form action="processmodal.php" method="POST">
       <div class="modal fade" id="ModalProf" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -248,21 +262,15 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
               <h3 class="modal-title" id="myModalLabel">A&ntilde;adir Profesor</h3>
             </div>
             <div class="modal-body">
-               <form class="form-signin">
+               
                   <!-- Nombre box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="Nombre del profesor">
+                    <input type="text" class="form-control" placeholder="Nombre del profesor" name="ModNProf">
                   </div>
-
-                  <!-- Idenprof box -->
-                  <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="N&uacute;mero de Identificaci&oacute;n">
-                  </div>
-
 
                   <!-- Correo box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" name="ModEProf">
                   </div>
 				                  <div>
                     <div> <p></p><p></p><p></p><p></p></div>
@@ -305,11 +313,12 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Aceptar</button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
             </div>
           </div>
         </div>
       </div>
+	</form>
      <!-- /container y fin de modal prof-->
 	 
 	

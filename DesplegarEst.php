@@ -6,7 +6,7 @@ $database = "estu_investigacion";
 
 $conexion = mysql_connect($host, $usuario, $password);
 mysql_select_DB($database);
-$numEst =$_POST['NumStu']; 
+$numEst =$_GET['NumStu']; 
 $sql_id='select * from Estudiantes where est_id ="'.$numEst.'";';
 $id_res= mysql_query($sql_id); //no devuelve el valor, es un pointer
 $row = mysql_fetch_row($id_res); 
@@ -158,7 +158,7 @@ $row = mysql_fetch_row($id_res);
               <h3 class="modal-title" id="myModalLabel">Actualizar Estudiante</h3>
             </div>
             <div class="modal-body">
-               <form class="form-signin">
+               <form class="form-signin" >
                   <!-- Nombre box -->
                   <div class="row" id="input-pass" >
                     <input type="text" class="form-control" placeholder="Nombre del estudiante">
