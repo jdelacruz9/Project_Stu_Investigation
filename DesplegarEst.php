@@ -67,6 +67,7 @@ $row_id = mysql_fetch_row($id_res);
            <form class="navbar-form navbar-right" role="form">
 				
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEst">Actualizar</button> 
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalcurso">Cursos</button>
 				
         </form>
         </div><!--/.navbar-collapse -->
@@ -163,7 +164,7 @@ $row_id = mysql_fetch_row($id_res);
           
         </div>
         <div class="col-md-6">
-         <h2>Investigacion</h2>
+         <h2>Investigaci&oacute;n</h2>
 		 <table class="table table-bordered" >
       <thead>
 		 <th>Titulo</th>
@@ -190,7 +191,7 @@ $row_id = mysql_fetch_row($id_res);
       <hr>
 
       <footer>
-        <p>&copy; Company 2014</p>
+        <p></p>
       </footer>
     </div> <!-- /container -->');
 	}
@@ -206,59 +207,39 @@ $row_id = mysql_fetch_row($id_res);
               <h3 class="modal-title" id="myModalLabel">Actualizar Estudiante</h3>
             </div>
             <div class="modal-body">
-               <form class="form-signin" >
+			 <form class="form-signin" action="actualizarEst.php" method="POST">
+               
                   <!-- Nombre box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="Nombre del estudiante">
+                    <input type="text" class="form-control" placeholder="Nombre del estudiante" name="EstName">
                   </div>
 
                   <!-- Numest box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante">
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante" name="EstNum">
                   </div>
 
 
                   <!-- Correo box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico">
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" name="EstE">
                   </div>
 
 
                   <!-- Telefono box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="Tel&eacute;fono">
+                    <input type="text" class="form-control" placeholder="Tel&eacute;fono" name="EstT">
                   </div>
 
                   <!-- Año box -->
                   <div class="row" id="input-pass"> 
-                    <input type="text" class="form-control" placeholder="A&ntilde;o">
+                    <input type="text" class="form-control" placeholder="A&ntilde;o" name="EstA">
                   </div>
-				  <!-- Cursos CCOM -->
-				 <div>
-                    <div> <p></p><p></p><p></p><p></p></div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Cursos de CCOM:</h3>
-                      </div>
-                      <div class="panel-body">                  
-                         <form class="form-signin">
-                          <!-- Codigo box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Codigo del Curso">
-                         </div>
-
-                         <!-- Titulo box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control"     placeholder="Titulo del Curso">
-                         </div>
-
-                          <!-- Descripcion box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
-                         </div>
-                        </div>
-                      </div>
-                    </div>
+				  <!-- Clasificicado CCOM box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Clasificado CCOM" name="EstCC">
+                  </div>
+				  
                   <!-- Proyectos de investigacion-->
                   <div>
                     <div> <p></p><p></p><p></p><p></p></div>
@@ -267,7 +248,7 @@ $row_id = mysql_fetch_row($id_res);
                         <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
                       </div>
                       <div class="panel-body">                  
-                         <form class="form-signin">
+                         <!--<form class="form-signin"> -->
                           <!-- Titulo Inv box -->
                          <div class="row" id="input-pass" >
                             <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
@@ -310,15 +291,64 @@ $row_id = mysql_fetch_row($id_res);
                   <!--<div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Identificaci?n del Maestro">
                   </div>-->
-               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Aceptar</button>
-            </div>
+              <!-- </form> -->
+				</div>
+				
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				  <button type="submit" class="btn btn-primary">Aceptar</button>
+				</div>
+			</form>
           </div>
         </div>
       </div>
+	  
+	<!-- Modal Cursos -->
+	<div class="modal fade" id="Modalcurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				  <h3 class="modal-title" id="myModalCurso">Actualizar Estudiante</h3>
+				</div>
+				<div class="modal-body">
+				 <!-- Cursos CCOM -->
+				 <form class="form-signin" action="cursoCCOM.php" method="POST">
+				 <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Cursos de CCOM:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                        <!-- <form class="form-signin"> -->
+                          <!-- Codigo box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Codigo del Curso">
+                         </div>
+
+                         <!-- Titulo box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"     placeholder="Titulo del Curso">
+                         </div>
+
+                          <!-- Descripcion box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
+                         </div>
+                        </div>
+						</form>
+                      </div>
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Aceptar</button>
+					
+				</div>
+			</div>
+		</div> 
+	</div>
    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -32,6 +32,6 @@ $insert_stu = 'insert into Estudiantes (est_id, nombre, email,cell_num,year,clas
 $insert_prof = 'insert into Profesor (nombre, email) value ("'.$ProfN.'","'.$ProfE.'");';
 $sql_insert_stu = mysql_query($insert_stu);
 $sql_insert_prof = mysql_query($insert_prof);
-echo $insert_stu;
+
 header('Location: investiga.php');
 ?>
