@@ -8,8 +8,18 @@ $conexion = mysql_connect($host, $usuario, $password);
 mysql_select_DB($database);
 $numEst =$_GET['NumStu']; 
 $sql_id='select * from Estudiantes where est_id ="'.$numEst.'";';
+$sql_cursos = 'select nota, titulo, codigo, semestre from Toma_Curso join Curso_CCOM where num_est="'.$numEst.'";';
+$sql_inve=  'select titulo,productos,P.nombre,descripcion from Investiga join Estudiantes join Investigacion join Aconseja join Profesor as P where i_id = investig_id and inv_id=investig_id and e_id = est_id and investig_id=i_id and profesor_id=prof_id and e_id="'.$numEst.'";';
+
+
 $id_res= mysql_query($sql_id); //no devuelve el valor, es un pointer
-$row = mysql_fetch_row($id_res); 
+$cursos_res = mysql_query($sql_cursos);
+$prof_res = mysql_query($sql_profe);
+//Used to fetch the investigation id
+
+$inve_res =  mysql_query($sql_inve);
+$row_id = mysql_fetch_row($id_res); 
+
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +32,7 @@ $row = mysql_fetch_row($id_res);
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Informaci&oacute;n del Estudiante</title>
+    <title>Informaci&oacute;n del Estudiante </title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -67,8 +77,8 @@ $row = mysql_fetch_row($id_res);
     <div class="jumbotron">
       <div class="container">
        <?php 
-		if ($row[1] == null) echo "<h1> El estudiante que buscas no est&aacute; en la base de datos.</h1></div></div>";
-		else{ echo '<h1>'.$row[1];
+		if ($row_id[1] == null) echo "<h1> El estudiante que buscas no est&aacute; en la base de datos.</h1></div></div>";
+		else{ echo '<h1>'.$row_id[1];
 		echo (
 		'</h1>
         <table class="table">
@@ -83,23 +93,22 @@ $row = mysql_fetch_row($id_res);
       </thead>
       <tbody>
         <tr>
-          <td>'.$row[2].'</td>
+          <td>'.$row_id[2].'</td>
           <td>');
 		  //Despliega numero de estudiante con guiones
-		  for ($i=0; $i < strlen($row[0]); $i++){
-			if ($i== 2 or $i== 4) echo $row[0][$i].'-';
-			else echo $row[0][$i];
+		  for ($i=0; $i < strlen($row_id[0]); $i++){
+			if ($i== 2 or $i== 4) echo $row_id[0][$i].'-';
+			else echo $row_id[0][$i];
 		  }
-		  
 		  
 		  echo ('</td>
           <td>');
-		  for ($i=0; $i < strlen($row[3]); $i++){
-			if ($i== 2 or $i== 5) echo $row[3][$i].'-';
-			else echo $row[3][$i];
+		  for ($i=0; $i < strlen($row_id[3]); $i++){
+			if ($i== 2 or $i== 5) echo $row_id[3][$i].'-';
+			else echo $row_id[3][$i];
 		  }
 		  echo ('</td> <td>');
-			switch ($row[4]){
+			switch ($row_id[4]){
 				case 1: echo "Primer A&ntilde;o";
 						break;
 				case 2: echo "Segundo A&ntilde;o";
@@ -108,11 +117,11 @@ $row = mysql_fetch_row($id_res);
 						break;
 				case 4: echo "Cuarto A&ntilde;o";
 						break;
-				default: echo $row[4];
+				default: echo $row_id[4];
 			}
 		  echo ('</td>
 		  <td>');
-			if ($row[5] == 1) echo "S&iacute";
+			if ($row_id[5] == 1) echo "S&iacute";
 			else echo "No";
 		   echo ('</td>
         </tr>
@@ -120,24 +129,61 @@ $row = mysql_fetch_row($id_res);
     </table>
         
       </div>
-    </div>');
-	}
+    </div>
+	
 
-?>
+
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-6">
           <h2>Cursos CCOM</h2>
-          <p>Tendria una lista con las clases de CCOM</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <table class="table table-condensed">
+      <thead>
+		 <th>Nota</th>
+		  <th>Titulo</th>
+          <th>Codigo</th>
+          <th>Semestre</th>
+	 
+      </thead>
+	  <tbody>');
+	  while ($row_cursos = mysql_fetch_row($cursos_res)){
+        echo ('<tr>
+		<td>'.$row_cursos[0].'</td>
+		  <td>'.$row_cursos[1].'</td>
+          <td>'.$row_cursos[2].'</td>
+          <td>'.$row_cursos[3].'</td>
+          
+          
+        </tr>');
+	}
+	
+	echo ('</tbody>
+	  </table>
+          
         </div>
         <div class="col-md-6">
-          <h2>Investigacion</h2>
-		 <p> Esta working?
-            
-		</p>
-       </div>
+         <h2>Investigacion</h2>
+		 <table class="table table-bordered" >
+      <thead>
+		 <th>Titulo</th>
+		 <th>Descripcion</th> 
+         <th>Producto</th>
+		<th>Profesor</th>
+      </thead>
+	  <tbody>');
+		 while($row_prof = mysql_fetch_row($inve_res)){
+		 echo '<tr>';
+			echo '<td>'.$row_prof[0].'</td>';
+			echo '<td>'.$row_prof[3].'</td>';
+			echo '<td>'.$row_prof[1].'</td>';
+			echo '<td>'.$row_prof[2].'</td>';
+			echo '</tr>';
+		 }
+       echo ('
+	   </tbody>
+	   </table>
+	   </div>
         
       </div>
 
@@ -146,7 +192,9 @@ $row = mysql_fetch_row($id_res);
       <footer>
         <p>&copy; Company 2014</p>
       </footer>
-    </div> <!-- /container -->
+    </div> <!-- /container -->');
+	}
+	?>
 
 <!-- modal Estudiantes-->
 

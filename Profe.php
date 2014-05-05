@@ -65,7 +65,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
       </div>
 
     </div><!-- /.container -->
-   
+
       
 <div class='container' style='position:relative;bottom:-100px;'>
 			<div class="bs-example">
@@ -82,11 +82,13 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
 				  <tbody>
 	<?php 
 		while($row = mysql_fetch_row($nombre_res)){
+			if ($row[2] != null){
 			echo  "<tr>";
 					echo "<td>".$row[0]."</td>";
 					echo "<td>".$row[2]."</td>";
 					echo "<td>".$row[1]."</td>";
 			echo "</tr>";
+			}
 		}
 	?>
 			  </tbody>
