@@ -34,6 +34,9 @@ $desc = $_POST['Cdesc'];
 $sem = $_POST['Csem'];
 $nota = $_POST['Cnota'];
 $numEst = $_POST['EstNum'];
+$codidel = $_POST['CCodi1'];
+$sem2=$_POST['Csem1'];
+$boton =$_POST['eraser2'];
 if ($codigo != null){
 $sql_insert_curso = 'insert into Curso_CCOM (titulo,descripcion,codigo) values ("'.$titulo.'","'.$desc.'","'.$codigo.'");';
 $sql_insert_toma = 'insert into Toma_Curso (nota,semestre,codigo_curso,num_est) values ("'.$nota.'","'.$sem.'","'.$codigo.'","'.$numEst.'");';
@@ -42,7 +45,9 @@ $curso_res = mysql_query($sql_insert_curso);
 $toma_res = mysql_query($sql_insert_toma);
 
 }
-
+if($boton == 'Delete') {
+mysql_query('delete from Toma_Curso where codigo_curso= "'.$codidel .'" and num_est='.$numEst.' and semestre="'.$sem2.'";');
+}
 header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$numEst);
 
 

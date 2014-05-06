@@ -182,75 +182,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                     <input type="text" class="form-control" placeholder="Classificado CCOM" name="ModCCStu">
                   </div>
 				 
-				  <!-- Cursos CCOM -->
-				 <div>
-                    <div> <p></p><p></p><p></p><p></p></div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Cursos de CCOM:</h3>
-                      </div>
-                      <div class="panel-body">                  
-                         
-                          <!-- Codigo box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Codigo del Curso">
-                         </div>
-
-                         <!-- Titulo box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Titulo del Curso">
-                         </div>
-
-                          <!-- Descripcion box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
-                         </div>
-						 
-                        </div>
-                      </div>
-                    </div>
-                  <!-- Proyectos de investigacion-->
-                  <div>
-                    <div> <p></p><p></p><p></p><p></p></div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
-                      </div>
-                      <div class="panel-body">                  
-                         
-                          <!-- Titulo Inv box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
-                         </div>
-
-                         <!-- Titulo Inv box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control"     placeholder="ID de la Investigaci&oacute;n">
-                         </div>
-
-                          <!-- Descripcion Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n">
-                         </div>
-                        
-                          <!-- Producto box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n">
-                         </div>
-
-                         <!-- Profesor Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Profesores de la Investigaci&oacute;n">
-                         </div>
-                         
-                         <!-- Compañeros Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n">
-                         </div>
-						
-                        </div>
-                      </div>
-                    </div>
+				 
                   <!-- Fecha de Admision box -->
                   <!--<div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Curso Actual">

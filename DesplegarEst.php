@@ -29,9 +29,8 @@ header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/login.html");
 
 $numEst =$_GET['NumStu']; 
 $sql_id='select * from Estudiantes where est_id ="'.$numEst.'";';
-$sql_cursos = 'select nota, titulo, codigo, semestre, descripcion from Toma_Curso join Curso_CCOM where num_est="'.$numEst.'";';
-$sql_inve=  'select titulo,productos,P.nombre,descripcion,prof_id,years from Investiga join Estudiantes join Investigacion join Aconseja join Profesor as P where i_id = investig_id and inv_id=investig_id and e_id = est_id and investig_id=i_id and profesor_id=prof_id and e_id="'.$numEst.'";';
-
+$sql_cursos = 'select nota, C.titulo, codigo, semestre, C.descripcion from Toma_Curso natural join Curso_CCOM as C where num_est = "'.$numEst.'" and codigo=codigo_curso;';
+$sql_inve=   'select titulo,productos,P.nombre,descripcion,prof_id,years from Investiga natural join Investigacion natural join Aconseja natural join Profesor as P where profesor_id =prof_id and i_id = investig_id and inv_id=i_id and e_id="'.$numEst.'";';
 
 $id_res= mysql_query($sql_id); //no devuelve el valor, es un pointer
 $cursos_res = mysql_query($sql_cursos);
@@ -229,7 +228,7 @@ $row_id = mysql_fetch_row($id_res);
       <footer>
         <p></p>
       </footer>
-    </div> <!-- /container -->');
+    </div> <!-- /container -->
 	
 	
 
@@ -252,7 +251,7 @@ $row_id = mysql_fetch_row($id_res);
 
                   <!-- Numest box -->
                   <div class="row" id="input-pass" >
-                    <input type="hidden" class="form-control" value="<?php echo $numEst;?>"placeholder="N&uacute;mero de Estudiante" name="EstNum">
+                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante" name="EstNum">
                   </div>
 
 
@@ -275,7 +274,7 @@ $row_id = mysql_fetch_row($id_res);
                   <div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Clasificado CCOM" name="EstCC">
                   </div>
-				  
+				  <input type="hidden" value="<?php echo $numEst?>" name="ONum">
                   
                   <!-- Fecha de Admision box -->
                   <!--<div class="row" id="input-pass"> 
@@ -305,7 +304,7 @@ $row_id = mysql_fetch_row($id_res);
 			<div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				  <h3 class="modal-title" id="myModalCurso">Actualizar Estudiante</h3>
+				  <h3 class="modal-title" id="myModalCurso">Actualizar Cursos</h3>
 				</div>
 				<div class="modal-body">
 				 <!-- Cursos CCOM -->
@@ -348,12 +347,31 @@ $row_id = mysql_fetch_row($id_res);
 						
                       </div>
                     </div>
-				</div>
-				<div class="modal-footer">
+					<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 					<button type="submit" class="btn btn-primary">Aceptar</button>
-					
+
 				</div>
+				
+				</div>
+				<div class="modal-body">
+				<div>
+				<h3 class="modal-title">Borrar Curso </h3>
+				<!-- Codigo box -->
+                    <div class="row" id="input-pass" >
+                        <input type="text" class="form-control" placeholder="Codigo del Curso" name="CCodi1">
+                    </div>
+			 <!-- Semestre box -->
+                    <div class="row" id="input-pass"> 
+                        <input type="text" class="form-control" placeholder="Semestre del Curso" name="Csem1">
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" value="Delete" name="eraser2">Delete </button>
+				</div>
+				</div>
+				</div>
+
 			</div>
 			</form>
 		</div> 
@@ -419,9 +437,9 @@ $row_id = mysql_fetch_row($id_res);
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 					<button type="submit" class="btn btn-primary">Aceptar</button>
-					
+					<button type="submit" class="btn btn-primary" value="Delete" name="eraser">Delete </button>
 				</div>
-			</div>
+				
 			</form>
 		</div> 
 	</div>

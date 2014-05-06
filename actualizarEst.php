@@ -32,7 +32,7 @@ $email = $_POST['EstE'];
 $tele  = $_POST['EstT'];
 $year  = $_POST['EstA'];
 $ccom = $_POST['EstCC'];
-
+$oldnum=$_POST['ONum'];
 switch($ccom){
 	case "Si":
     case "S" :
@@ -42,8 +42,9 @@ switch($ccom){
 			break;
     default : $clasif = 0;	
 }
-$estu_update = 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.' where est_id="'.$num.'";';
+$estu_update = 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.',est_id="'.$num.'" where est_id="'.$oldnum.'";';
 $estu_up_res = mysql_query($estu_update);
+echo 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.',est_id="'.$num.'" where est_id="'.$oldnum.'";';
 header('location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$num);
 
 ?>

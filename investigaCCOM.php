@@ -38,20 +38,30 @@ $invprod = $_POST['InvProd'];
 $invprof = $_POST['profEm'];
 $invyear = $_POST['InvYear'];
 $numEst = $_POST['NumEstu'];
+$boton = $_POST['eraser'];
+echo $boton.'   ';
+$id_profe_sql = mysql_query('select P.prof_id from Profesor as P where email = "'.$invprof.'"');
+$id_profe = mysql_fetch_row($id_profe_sql);
+
 //$sem = $_POST['Csem'];
 //$nota = $_POST['Cnota'];
 //if ($invid != null){
 $sql_insert_inv = 'insert into Investigacion (titulo,descripcion) values ("'.$invtitulo.'","'.$invdesc.'");';
+$inv_res = mysql_query($sql_insert_inv);
+
 $sql_select_id =  mysql_query('select inv_id from Investigacion where titulo = "'.$invtitulo.'";');
 $sql_invId = mysql_fetch_row($sql_select_id);
-$id_profe = mysql_query('select P.prof_id from Profesor as P where email = "'.$invprof.'"');
-$sql_insert_investiga = 'insert into Investiga (e_id,i_id,productos,years) values ("'.$numEst.'","'.$sql_invId.'","'.$invprod.'",'.$invyear.');';
-$id_investiga = mysql_query('select  investiga_id from Investiga where e_id="'.$numEst.'" and i_id="'.$sql_invId.'";'); 
-$sql_insert_aconseja = mysql_query('insert into Aconseja (investig_id,profesor_id) values ("'.$id_investiga.'","'.$id_profe.'");');
 
 
-$inv_res = mysql_query($sql_insert_inv);
-$investiga_res = mysql_query($sql_insert_investiga);
+
+$sql_insert_investiga = mysql_query('insert into Investiga (investiga_id,e_id,i_id,productos,years) values ('.$sql_invId[0].',"'.$numEst.'",'.$sql_invId[0].',"'.$invprod.'",'.$invyear.');');
+//echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');';
+$sql_insert_aconseja = mysql_query('insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');');
+echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');';
+if($boton == 'Delete') {
+mysql_query('delete from Aconseja where investig_id = '.$sql_invId[0].' and profesor_id='.$id_profe[0].';');
+}
+
 
 //}
 
