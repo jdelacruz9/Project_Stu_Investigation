@@ -12,7 +12,12 @@
 	//$pass = $_POST['passwords'];
 	
 	session_start();
-	
+	if(strlen($_SESSION['pass']) > 20  or strlen($_SESSION['user']) > 20)
+	{
+		header("location: http://ada.uprrp.edu/~ijimenez/Estu_Investigar/login.html");
+	}
+	else
+	{
 	$query_users = mysql_query('select username from Passwords where pass = "'.$_SESSION['pass'].'"');
 	$query_pass = mysql_query('select pass from Passwords where username = "'.$_SESSION['user'].'"'); // using client input as variable for a query: asking to be hacked.																							 
 	
@@ -23,6 +28,7 @@
 	}else{ // No rows were returned therefore there were no matches
 	 
 		header("location: http://ada.uprrp.edu/~ijimenez/Estu_Investigar/login.html"); //jump to PORTADA: investiga.php
+	}
 	}
 ?>
 	
