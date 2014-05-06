@@ -23,7 +23,7 @@ $query_pass = mysql_query('select pass from Passwords where username = "'.$_SESS
 
 if (/*mysql_num_rows($query_pass) > 0 or*/ mysql_num_rows($query_users) > 0) // More than 1 row returned which means there is data
 {
-//header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php"); //ALERT!!! something typed is wrong; try again
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php"); //ALERT!!! something typed is wrong; try again
 
 }else{ // No rows were returned therefore there were no matches
 
