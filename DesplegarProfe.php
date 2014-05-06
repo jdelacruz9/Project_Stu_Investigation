@@ -6,6 +6,27 @@ $database = "estu_investigacion";
 
 $conexion = mysql_connect($host, $usuario, $password);
 mysql_select_DB($database);
+
+session_start();
+if(strlen($_SESSION['pass']) > 20 or strlen($_SESSION['user']) > 20)
+{
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/signin.php");
+}
+else
+{
+$query_users = mysql_query('select username from Passwords where pass = "'.$_SESSION['pass'].'"');
+$query_pass = mysql_query('select pass from Passwords where username = "'.$_SESSION['user'].'"'); // using client input as variable for a query: asking to be hacked.
+
+if (/*mysql_num_rows($query_pass) > 0 or*/ mysql_num_rows($query_users) > 0) // More than 1 row returned which means there is data
+{
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php"); //ALERT!!! something typed is wrong; try again
+
+}else{ // No rows were returned therefore there were no matches
+
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/signin.php"); //jump to PORTADA: investiga.php
+}
+}
+
 $prof_id = $_GET['IDprof'];
 $sql_profID='select * from Profesor where prof_id='.$prof_id.';';
 $sql_estu = 'select E.nombre,est_id,titulo,descripcion,years from Investiga join Estudiantes as E join Investigacion join Aconseja join Profesor as P where i_id = investig_id and inv_id=investig_id and e_id = est_id and investig_id=i_id and profesor_id=prof_id and profesor_id='.$prof_id.';';
@@ -57,14 +78,16 @@ $row_prof = mysql_fetch_row($profID_res);
           </button>
           <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php">Inicio</a>
         </div>
+		<?php if (mysql_num_rows($estu_res) != 0) echo ('
         <div class="navbar-collapse collapse">
            <form class="navbar-form navbar-right" role="form">
 				
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEst">Actualizar</button> 
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalcurso">Cursos</button>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalprof">Actualizar</button> 
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal">Cursos</button>
 				
         </form>
-        </div><!--/.navbar-collapse -->
+        </div><!--/.navbar-collapse -->');
+		?>
       </div>
     </div>
 <?php if ($profID_res == null){
@@ -83,9 +106,11 @@ $row_prof = mysql_fetch_row($profID_res);
 			<p>Correo electr&oacute;nico: <?php echo $row_prof[1];?></p>
 		</div>
 	</div>
-	
-	<div class="container">
-	<h1>Proyectos que aconseja <?php echo $row_prof[2]?>.</h1>
+	<?php if (mysql_num_rows($estu_res) == 0)
+		echo '<div class="container"><h1>El profesor o la profesora no aconseja una investigaci&oacute;n.</h1></div>';
+		else {
+	echo ('<div class="container">
+	<h1>Proyectos que aconseja '.$row_prof[2].'.</h1>
 	<table class="table">
       <thead>
         <tr>
@@ -95,8 +120,7 @@ $row_prof = mysql_fetch_row($profID_res);
           <th>years</th>
         </tr>
       </thead>
-      <tbody>
-        <?php
+      <tbody>');
 		while($row_est = mysql_fetch_row($estu_res)){
 			echo '<tr>';
 			  echo '<td><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$row_est[1].'">'.$row_est[0].'</a></td>';
@@ -105,7 +129,8 @@ $row_prof = mysql_fetch_row($profID_res);
 			  echo '<td>'.$row_est[4].'</td>';
 			echo '</tr>';
 		}
+		echo ('</tbody>
+		</table>
+		</div>');
+	}
 		?>
-      </tbody>
-    </table>
-	</div>

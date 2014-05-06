@@ -6,18 +6,38 @@ $database = "estu_investigacion";
 
 $conexion = mysql_connect($host, $usuario, $password);
 mysql_select_DB($database);
+
+session_start();
+if(strlen($_SESSION['pass']) > 20 or strlen($_SESSION['user']) > 20)
+{
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/signin.php");
+}
+else
+{
+$query_users = mysql_query('select username from Passwords where pass = "'.$_SESSION['pass'].'"');
+$query_pass = mysql_query('select pass from Passwords where username = "'.$_SESSION['user'].'"'); // using client input as variable for a query: asking to be hacked.
+
+if (/*mysql_num_rows($query_pass) > 0 or*/ mysql_num_rows($query_users) > 0) // More than 1 row returned which means there is data
+{
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php"); //ALERT!!! something typed is wrong; try again
+
+}else{ // No rows were returned therefore there were no matches
+
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/signin.php"); //jump to PORTADA: investiga.php
+}
+}
+
 $numEst =$_GET['NumStu']; 
 $sql_id='select * from Estudiantes where est_id ="'.$numEst.'";';
-$sql_cursos = 'select nota, titulo, codigo, semestre from Toma_Curso join Curso_CCOM where num_est="'.$numEst.'";';
+$sql_cursos = 'select nota, titulo, codigo, semestre, descripcion from Toma_Curso join Curso_CCOM where num_est="'.$numEst.'";';
 $sql_inve=  'select titulo,productos,P.nombre,descripcion,prof_id,years from Investiga join Estudiantes join Investigacion join Aconseja join Profesor as P where i_id = investig_id and inv_id=investig_id and e_id = est_id and investig_id=i_id and profesor_id=prof_id and e_id="'.$numEst.'";';
 
 
 $id_res= mysql_query($sql_id); //no devuelve el valor, es un pointer
 $cursos_res = mysql_query($sql_cursos);
-$prof_res = mysql_query($sql_profe);
-//Used to fetch the investigation id
 
 $inve_res =  mysql_query($sql_inve);
+
 $row_id = mysql_fetch_row($id_res); 
 
 
@@ -63,6 +83,8 @@ $row_id = mysql_fetch_row($id_res);
           </button>
           <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php">Inicio</a>
         </div>
+		<?php
+		if ($row_id[1] != null) echo ('
         <div class="navbar-collapse collapse">
            <form class="navbar-form navbar-right" role="form">
 				
@@ -70,7 +92,8 @@ $row_id = mysql_fetch_row($id_res);
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalcurso">Cursos</button>
 				
         </form>
-        </div><!--/.navbar-collapse -->
+        </div><!--/.navbar-collapse -->');
+		?>
       </div>
     </div>
 
@@ -95,7 +118,7 @@ $row_id = mysql_fetch_row($id_res);
       <tbody>
         <tr>
           <td>'.$row_id[2].'</td>
-          <td>');
+          <td >');
 		  //Despliega numero de estudiante con guiones
 		  for ($i=0; $i < strlen($row_id[0]); $i++){
 			if ($i== 2 or $i== 4) echo $row_id[0][$i].'-';
@@ -136,34 +159,43 @@ $row_id = mysql_fetch_row($id_res);
 
     <div class="container">
       <!-- Example row of columns -->
-      
-        <div class="container">
+      '); if (mysql_num_rows($cursos_res) == 0)
+			echo '<h1>El estudiante no est&aacute; tomando cursos de CCOM.</h1>';
+		else{
+       echo ('<div class="container">
           <h2>Cursos CCOM</h2>
-        <table class="table table-condensed">
-      <thead>
-		 <th>Nota</th>
-		  <th>Titulo</th>
-          <th>Codigo</th>
-          <th>Semestre</th>
-	 
-      </thead>
-	  <tbody>');
-	  while ($row_cursos = mysql_fetch_row($cursos_res)){
-        echo ('<tr>
-		<td>'.$row_cursos[0].'</td>
-		  <td>'.$row_cursos[1].'</td>
-          <td>'.$row_cursos[2].'</td>
-          <td>'.$row_cursos[3].'</td>
-          
-          
-        </tr>');
-	}
+			<table class="table table-condensed">
+			<thead>
+			 <th>Nota</th>
+			  <th>Titulo</th>
+			  <th>Codigo</th>
+			  <th>Semestre</th>
+			  <th>Descripci&oacute;n</th>
+		 
+			</thead>
+			<tbody>');
+		while ($row_cursos = mysql_fetch_row($cursos_res)){
+			echo ('<tr>
+			<td>'.$row_cursos[0].'</td>
+			  <td>'.$row_cursos[1].'</td>
+			  <td>'.$row_cursos[2].'</td>
+			  <td>'.$row_cursos[3].'</td>
+			  <td>'.$row_cursos[4].'</td>
+			  
+			</tr>');
+		}
+	
 	
 	echo ('</tbody>
 	  </table>
           
-        </div>
-        <div class="container">
+        </div>');
+	}
+	
+	if (mysql_num_rows($inve_res) == 0)
+		echo '<h1>El estudiante no est&aacute; haciendo investigaci&oacute;n</h1>';
+	else{
+       echo (' <div class="container">
          <h2>Investigaciones</h2>
 		 <table class="table table-bordered" >
       <thead>
@@ -187,18 +219,18 @@ $row_id = mysql_fetch_row($id_res);
        echo ('
 	   </tbody>
 	   </table>
-	   </div>
+	   </div>');
         
-      
-
-      
+      }
+	}
+      ?>
 
       <footer>
         <p></p>
       </footer>
     </div> <!-- /container -->');
-	}
-	?>
+	
+	
 
 <!-- modal Estudiantes-->
 
@@ -259,7 +291,7 @@ $row_id = mysql_fetch_row($id_res);
 
                          <!-- Titulo Inv box -->
                          <div class="row" id="input-pass" >
-                            <input type="text" class="form-control"     placeholder="ID de la Investigaci&oacute;n">
+                            <input type="text" class="form-control"  placeholder="ID de la Investigaci&oacute;n">
                          </div>
 
                           <!-- Descripcion Inv box -->
@@ -309,6 +341,7 @@ $row_id = mysql_fetch_row($id_res);
 	<!-- Modal Cursos -->
 	<div class="modal fade" id="Modalcurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
+		<form class="form-signin" action="cursoCCOM.php" method="POST">
 			<div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -316,7 +349,7 @@ $row_id = mysql_fetch_row($id_res);
 				</div>
 				<div class="modal-body">
 				 <!-- Cursos CCOM -->
-				 <form class="form-signin" action="cursoCCOM.php" method="POST">
+				 
 				 <div>
                     <div> <p></p><p></p><p></p><p></p></div>
                     <div class="panel panel-default">
@@ -324,23 +357,35 @@ $row_id = mysql_fetch_row($id_res);
                         <h3 class="panel-title">Cursos de CCOM:</h3>
                       </div>
                       <div class="panel-body">                  
-                        <!-- <form class="form-signin"> -->
+                        
                           <!-- Codigo box -->
                          <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Codigo del Curso">
+                            <input type="text" class="form-control" placeholder="Codigo del Curso" name="CCodi">
                          </div>
 
                          <!-- Titulo box -->
                          <div class="row" id="input-pass" >
-                            <input type="text" class="form-control"     placeholder="Titulo del Curso">
+                            <input type="text" class="form-control"  placeholder="Titulo del Curso" name="Ctitu">
                          </div>
 
                           <!-- Descripcion box -->
                          <div class="row" id="input-pass"> 
-                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso">
+                           <input type="textarea" rows='3' class="form-control" placeholder="Descripcion del Curso" name="Cdesc">
+                         </div>
+						 <!-- Semestre box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Semestre del Curso" name="Csem">
+                         </div>
+						 <!-- Nota box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Nota en el Curso" name="Cnota">
+                         </div>
+						 <!-- num est box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="hidden" class="form-control" value="<?php echo $numEst?>" name="EstNum">
                          </div>
                         </div>
-						</form>
+						
                       </div>
                     </div>
 				</div>
@@ -350,6 +395,7 @@ $row_id = mysql_fetch_row($id_res);
 					
 				</div>
 			</div>
+			</form>
 		</div> 
 	</div>
    <!-- Bootstrap core JavaScript

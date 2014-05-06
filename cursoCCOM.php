@@ -1,3 +1,4 @@
+
 <?php 
 $host = "localhost";
 $usuario = "dramirez2";
@@ -27,30 +28,22 @@ header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/signin.php");
 }
 }
 
-$estuName = $_POST['ModNStu'];
-$estuID = $_POST['ModIDStu'];
-$estuE = $_POST['ModEStu'];
-$estuT = $_POST['ModTStu'];
-$estuA = $_POST['ModAStu'];
-$estuCC = $_POST['ModCCStu'];
+$codigo = $_POST['CCodi'];
+$titulo = $_POST['Ctitu'];
+$desc = $_POST['Cdesc'];
+$sem = $_POST['Csem'];
+$nota = $_POST['Cnota'];
+$numEst = $_POST['EstNum'];
+if ($codigo != null){
+$sql_insert_curso = 'insert into Curso_CCOM (titulo,descripcion,codigo) values ("'.$titulo.'","'.$desc.'","'.$codigo.'");';
+$sql_insert_toma = 'insert into Toma_Curso (nota,semestre,codigo_curso,num_est) values ("'.$nota.'","'.$sem.'","'.$codigo.'","'.$numEst.'");';
 
-switch($estuCC){
-	case "Si":
-    case "S" :
-	case "si":
-	case "s" :
-			$clasif = 1;
-			break;
-    default : $clasif = 0;	
+$curso_res = mysql_query($sql_insert_curso);
+$toma_res = mysql_query($sql_insert_toma);
+
 }
 
-$ProfN = $_POST['ModNProf'];
-$ProfE = $_POST['ModEProf'];
+header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$numEst);
 
-$insert_stu = 'insert into Estudiantes (est_id, nombre, email,cell_num,year,clasificado_ccom) value ("'.$estuID.'","'.$estuName.'","'.$estuE.'","'.$estuT.'",'.$estuA.','.$clasif.');';
-$insert_prof = 'insert into Profesor (nombre, email) value ("'.$ProfN.'","'.$ProfE.'");';
-$sql_insert_stu = mysql_query($insert_stu);
-$sql_insert_prof = mysql_query($insert_prof);
 
-header('Location: investiga.php');
 ?>
