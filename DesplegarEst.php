@@ -9,7 +9,7 @@ mysql_select_DB($database);
 $numEst =$_GET['NumStu']; 
 $sql_id='select * from Estudiantes where est_id ="'.$numEst.'";';
 $sql_cursos = 'select nota, titulo, codigo, semestre from Toma_Curso join Curso_CCOM where num_est="'.$numEst.'";';
-$sql_inve=  'select titulo,productos,P.nombre,descripcion from Investiga join Estudiantes join Investigacion join Aconseja join Profesor as P where i_id = investig_id and inv_id=investig_id and e_id = est_id and investig_id=i_id and profesor_id=prof_id and e_id="'.$numEst.'";';
+$sql_inve=  'select titulo,productos,P.nombre,descripcion,prof_id,years from Investiga join Estudiantes join Investigacion join Aconseja join Profesor as P where i_id = investig_id and inv_id=investig_id and e_id = est_id and investig_id=i_id and profesor_id=prof_id and e_id="'.$numEst.'";';
 
 
 $id_res= mysql_query($sql_id); //no devuelve el valor, es un pointer
@@ -136,8 +136,8 @@ $row_id = mysql_fetch_row($id_res);
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-6">
+      
+        <div class="container">
           <h2>Cursos CCOM</h2>
         <table class="table table-condensed">
       <thead>
@@ -163,22 +163,25 @@ $row_id = mysql_fetch_row($id_res);
 	  </table>
           
         </div>
-        <div class="col-md-6">
-         <h2>Investigaci&oacute;n</h2>
+        <div class="container">
+         <h2>Investigaciones</h2>
 		 <table class="table table-bordered" >
       <thead>
 		 <th>Titulo</th>
 		 <th>Descripcion</th> 
          <th>Producto</th>
 		<th>Profesor</th>
+		<th>A&ntilde;o(s)</th>
       </thead>
 	  <tbody>');
+	  
 		 while($row_prof = mysql_fetch_row($inve_res)){
 		 echo '<tr>';
 			echo '<td>'.$row_prof[0].'</td>';
 			echo '<td>'.$row_prof[3].'</td>';
 			echo '<td>'.$row_prof[1].'</td>';
-			echo '<td>'.$row_prof[2].'</td>';
+			echo '<td><a href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarProfe.php?IDprof='.$row_prof[4].'">'.$row_prof[2].'</a></td>';
+			echo '<td>'.$row_prof[5].'</td>';
 			echo '</tr>';
 		 }
        echo ('
@@ -186,9 +189,9 @@ $row_id = mysql_fetch_row($id_res);
 	   </table>
 	   </div>
         
-      </div>
+      
 
-      <hr>
+      
 
       <footer>
         <p></p>
