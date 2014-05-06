@@ -90,6 +90,7 @@ $row_id = mysql_fetch_row($id_res);
 				
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEst">Actualizar</button> 
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalcurso">Cursos</button>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalinve">Investigaci&oacute;n</button>
 				
         </form>
         </div><!--/.navbar-collapse -->');
@@ -251,7 +252,7 @@ $row_id = mysql_fetch_row($id_res);
 
                   <!-- Numest box -->
                   <div class="row" id="input-pass" >
-                    <input type="text" class="form-control" placeholder="N&uacute;mero de Estudiante" name="EstNum">
+                    <input type="hidden" class="form-control" value="<?php echo $numEst;?>"placeholder="N&uacute;mero de Estudiante" name="EstNum">
                   </div>
 
 
@@ -275,48 +276,7 @@ $row_id = mysql_fetch_row($id_res);
                     <input type="text" class="form-control" placeholder="Clasificado CCOM" name="EstCC">
                   </div>
 				  
-                  <!-- Proyectos de investigacion-->
-                  <div>
-                    <div> <p></p><p></p><p></p><p></p></div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
-                      </div>
-                      <div class="panel-body">                  
-                         <!--<form class="form-signin"> -->
-                          <!-- Titulo Inv box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
-                         </div>
-
-                         <!-- Titulo Inv box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control"  placeholder="ID de la Investigaci&oacute;n">
-                         </div>
-
-                          <!-- Descripcion Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n">
-                         </div>
-                        
-                          <!-- Producto box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n">
-                         </div>
-
-                         <!-- Profesor Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Profesores de la Investigaci&oacute;n">
-                         </div>
-                         
-                         <!-- Compañeros Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n">
-                         </div>
-
-                        </div>
-                      </div>
-                    </div>
+                  
                   <!-- Fecha de Admision box -->
                   <!--<div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Curso Actual">
@@ -398,6 +358,74 @@ $row_id = mysql_fetch_row($id_res);
 			</form>
 		</div> 
 	</div>
+	
+	<!-- Proyectos de investigacion-->
+	<div class="modal fade" id="Modalinve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+		<form class="form-signin" action="investigaCCOM.php" method="POST">
+			<div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				  <h3 class="modal-title" id="myModalCurso">Actualizar Estudiante</h3>
+				</div>
+				<div class="modal-body">
+				 
+				 
+				 <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <!--<form class="form-signin"> -->
+                          <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n" name="InvTi">
+                         </div>
+
+                         <!-- ID Inv box 
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"  placeholder="ID de la Investigaci&oacute;n" name="InvID">
+                         </div> -->
+
+                          <!-- Descripcion Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n" name="InvDes">
+                         </div>
+                        
+                          <!-- Producto box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n" name="InvProd"> 
+                         </div>
+
+                         <!-- Profesor Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Correo electr&oacute;nico del aconsejador" name="profEm">
+                         </div>
+						 <!-- Año box  -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"  placeholder="A&ntilde;os en la Investigaci&oacute;n" name="InvYear">
+                         </div>
+						 <input type="hidden" value="<?php echo $numEst;?>" name="NumEstu">
+                         <!-- Compañeros Inv box 
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n" name="">
+                         </div> -->
+
+                        </div>
+                      </div>
+                    </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Aceptar</button>
+					
+				</div>
+			</div>
+			</form>
+		</div> 
+	</div>
+                  
    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
