@@ -125,7 +125,7 @@ $row_prof = mysql_fetch_row($profID_res);
           <th>Nombre</th>
           <th>Titulo</th>
           <th>Descripcion</th>
-          <th>years</th>
+          <th>A&ntilde;os</th>
         </tr>
       </thead>
       <tbody>');
