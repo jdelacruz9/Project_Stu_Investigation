@@ -35,13 +35,12 @@ header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/login.html");
 $invtitulo = $_POST['InvTi'];
 $invdesc = $_POST['InvDes'];
 $invprod = $_POST['InvProd'];
-$invprof = $_POST['profEm'];
+$id_profe = $_POST['profeID'];
 $invyear = $_POST['InvYear'];
-$numEst = $_POST['NumEstu'];
+$numEst = $_POST['numEstu'];
+
 $boton = $_POST['eraser'];
-echo $boton.'   ';
-$id_profe_sql = mysql_query('select P.prof_id from Profesor as P where email = "'.$invprof.'"');
-$id_profe = mysql_fetch_row($id_profe_sql);
+
 
 //$sem = $_POST['Csem'];
 //$nota = $_POST['Cnota'];
@@ -56,16 +55,16 @@ $sql_invId = mysql_fetch_row($sql_select_id);
 
 $sql_insert_investiga = mysql_query('insert into Investiga (investiga_id,e_id,i_id,productos,years) values ('.$sql_invId[0].',"'.$numEst.'",'.$sql_invId[0].',"'.$invprod.'",'.$invyear.');');
 //echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');';
-$sql_insert_aconseja = mysql_query('insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');');
-echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');';
+$sql_insert_aconseja = mysql_query('insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe.');');
+echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe.');';
 if($boton == 'Delete') {
-mysql_query('delete from Aconseja where investig_id = '.$sql_invId[0].' and profesor_id='.$id_profe[0].';');
+mysql_query('delete from Aconseja where investig_id = '.$sql_invId[0].' and profesor_id='.$id_profe.';');
 }
 
 
 //}
 
-header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarProfe.php?IDprof'.$id_profe[0]);
+header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarProfe.php?IDprof'.$id_profe);
 
 
 ?>
