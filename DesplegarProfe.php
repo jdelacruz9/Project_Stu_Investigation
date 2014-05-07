@@ -1,4 +1,4 @@
-<?php 
+<?php MINEEEEEEEEEEE
 $host = "localhost";
 $usuario = "dramirez2";
 $password = "turntablepower2";
@@ -78,14 +78,105 @@ $row_prof = mysql_fetch_row($profID_res);
           </button>
           <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php">Inicio</a>
         </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	<!-- Proyectos de investigacion-->
+	<div class="modal fade" id="Modalinve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+		<form class="form-signin" action="investigaProfeCCOM.php" method="POST">
+			<div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				  <h3 class="modal-title" id="myModalCurso">Ingresar Proyecto de Investigaci&oacute;n</h3>
+				</div>
+				<div class="modal-body">
+				 
+				 
+				 <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <!--<form class="form-signin"> -->
+                          <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n" name="InvTi">
+                         </div>
+
+                         <!-- ID Inv box 
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"  placeholder="ID de la Investigaci&oacute;n" name="InvID">
+                         </div> -->
+
+                          <!-- Descripcion Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n" name="InvDes">
+                         </div>
+                        
+                          <!-- Producto box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n" name="InvProd"> 
+                         </div>
+
+                         <!-- Profesor Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Correo electr&oacute;nico del aconsejador" name="profEm" value="<?php echo $row_prof[1];?>">
+                         </div>
+						 <!-- Año box  -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"  placeholder="A&ntilde;os en la Investigaci&oacute;n" name="InvYear">
+                         </div>
+						 <input type="hidden" value="<?php echo $numEst;?>" name="NumEstu">
+                         <!-- Compañeros Inv box 
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n" name="">
+                         </div> -->
+
+                        </div>
+                      </div>
+                    </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Ingresar</button>
+					<button type="submit" class="btn btn-primary" value="Delete" name="eraser">Delete </button>
+				</div>
+				
+			</form>
+		</div> 
+	</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<form action="actualizarProf.php" method="POST" class="navbar-form navbar-right" role="form">
+					<button type="submit" value="DELETE" name="deleteProf" class="btn btn-danger" onclick="deleteWarning()" >Danger</button>
+					<input type="hidden" value="<?php echo $prof_id?>" name="ProfeID">
+					</form>
 		<?php if (mysql_num_rows($estu_res) != 0) echo ('
         <div class="navbar-collapse collapse">
            <form class="navbar-form navbar-right" role="form">
 				
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalprof">Actualizar</button> 
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal">Cursos</button>
-				
+	
         </form>
+		
         </div><!--/.navbar-collapse -->');
 		?>
       </div>
@@ -106,6 +197,7 @@ $row_prof = mysql_fetch_row($profID_res);
 			<p>Correo electr&oacute;nico: <?php echo $row_prof[1];?></p>
 		</div>
 	</div>
+	
 	<?php if (mysql_num_rows($estu_res) == 0)
 		echo '<div class="container"><h1>El profesor o la profesora no aconseja una investigaci&oacute;n.</h1></div>';
 		else {
@@ -134,3 +226,51 @@ $row_prof = mysql_fetch_row($profID_res);
 		</div>');
 	}
 		?>
+		
+		
+	<!-- modal Profesores-->
+	<form action="actualizarProf.php" method="POST">
+      <div class="modal fade" id="Modalprof" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="myModalLabel">Actualizar Profesor</h3>
+            </div>
+            <div class="modal-body">
+               
+                  <!-- Nombre box -->
+                  <div class="row" id="input-pass" >
+                    <input type="text" class="form-control" placeholder="Nombre del profesor" name="ProfNom">
+                  </div>
+
+                  <!-- Correo box -->
+                  <div class="row" id="input-pass"> 
+                    <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" name="ProfEma">
+                  </div>
+				<input type="hidden" value="<?php echo $prof_id ?>" name="idProfe">
+               </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+	</form>
+     <!-- /container y fin de modal prof-->
+	 <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+	<script> 
+	function deleteWarning()
+	{
+	alert("Vas a remover al profesor de la base de datos, &iquest; continuar?");
+	}
+	</script>
+</body>
+</html>
