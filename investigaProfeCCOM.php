@@ -57,6 +57,7 @@ $sql_insert_investiga = mysql_query('insert into Investiga (investiga_id,e_id,i_
 //echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe[0].');';
 $sql_insert_aconseja = mysql_query('insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe.');');
 echo 'insert into Aconseja (investig_id,profesor_id) values ('.$sql_invId[0].','.$id_profe.');';
+
 if($boton == 'Delete') {
 mysql_query('delete from Aconseja where investig_id = '.$sql_invId[0].' and profesor_id='.$id_profe.';');
 }
@@ -64,7 +65,7 @@ mysql_query('delete from Aconseja where investig_id = '.$sql_invId[0].' and prof
 
 //}
 
-header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarProfe.php?IDprof'.$id_profe);
+header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarProfe.php?IDprof='.$id_profe);
 
 
 ?>

@@ -181,7 +181,7 @@ $row_prof = mysql_fetch_row($profID_res);
 	 <!-- Proyectos de investigacion-->
 	<div class="modal fade" id="Modalinve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-		<form class="form-signin" action="investigaCCOM.php" method="POST">
+		<form class="form-signin" action="investigaProfeCCOM.php" method="POST">
 			<div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
