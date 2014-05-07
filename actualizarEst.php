@@ -26,6 +26,14 @@ if (/*mysql_num_rows($query_pass) > 0 or*/ mysql_num_rows($query_users) > 0) // 
 header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/login.html"); //jump to PORTADA: investiga.php
 }
 }
+$numdel = $_POST['NumEstu'];
+$buttondel = $_POST['deleteEst'];
+if ($buttondel == "DELETE"){
+
+mysql_query('delete from Estudiantes where est_id='.$numdel.';');
+header('location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php');
+exit;
+}
 $name = $_POST['EstName'];
 $num = $_POST['EstNum'];
 $email = $_POST['EstE'];

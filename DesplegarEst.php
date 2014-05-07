@@ -82,6 +82,12 @@ $row_id = mysql_fetch_row($id_res);
           </button>
           <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php">Inicio</a>
         </div>
+		<form  class="navbar-form navbar-right" role="form">
+					<button rel="drevil" type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="left">
+					Borrar Estudiante
+					</button>
+					
+	    </form>
 		<?php
 		if ($row_id[1] != null) echo ('
         <div class="navbar-collapse collapse">
@@ -90,6 +96,7 @@ $row_id = mysql_fetch_row($id_res);
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalEst">Actualizar</button> 
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalcurso">Cursos</button>
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalinve">Investigaci&oacute;n</button>
+					
 				
         </form>
         </div><!--/.navbar-collapse -->');
@@ -450,5 +457,15 @@ $row_id = mysql_fetch_row($id_res);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/docs.min.js"></script>
+	<script type="text/javascript">
+ $(document).ready(function() {
+  $("[rel=drevil]").popover({
+      placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+      title : '<div style="text-align:center; text-decoration:underline;">&iexcl;CUIDADO!</div>', //this is the top title bar of the popover. add some basic css
+      html: 'true', //needed to show html of course
+      content : '<form action="actualizarEst.php" method="POST"><div id="popOverBox"><p>El estudiante se ve a borrar de la base de datos:</p><input type="hidden" value="<?php echo $numEst?>" name="NumEstu"><button type="submit" value="DELETE" name="deleteEst" class="btn btn-danger" >Borrar </button></div></form>' //this is the content of the html box. add the image here or anything you want really.
+});
+});
+</script>
   </body>
 </html>
