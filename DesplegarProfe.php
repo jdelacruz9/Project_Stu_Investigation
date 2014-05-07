@@ -79,16 +79,18 @@ $row_prof = mysql_fetch_row($profID_res);
           <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php">Inicio</a>
         </div>
 		
-		<form action="actualizarProf.php" method="POST" class="navbar-form navbar-right" role="form">
-					<button type="submit" value="DELETE" name="deleteProf" class="btn btn-danger" onclick="deleteWarning()" >Danger</button>
-					<input type="hidden" value="<?php echo $prof_id?>" name="ProfeID">
-					</form>
+		<form  class="navbar-form navbar-right" role="form">
+					<button rel="drevil" type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="left">
+					Borrar Profesor
+					</button>
+					
+	    </form>
 		<?php if (mysql_num_rows($estu_res) != 0) echo ('
         <div class="navbar-collapse collapse">
            <form class="navbar-form navbar-right" role="form">
 				
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalprof">Actualizar</button> 
-	
+
         </form>
 		
         </div><!--/.navbar-collapse -->');
@@ -181,10 +183,18 @@ $row_prof = mysql_fetch_row($profID_res);
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/docs.min.js"></script>
 	<script> 
-	function deleteWarning()
-	{
-	alert("Vas a remover al profesor de la base de datos, &iquest; continuar?");
-	}
+	$('#example').tooltip(options)
 	</script>
+	<script type="text/javascript">
+ $(document).ready(function() {
+  $("[rel=drevil]").popover({
+      placement : 'bottom', //placement of the popover. also can use top, bottom, left or right
+      title : '<div style="text-align:center; text-decoration:underline;">&iexcl;CUIDADO!</div>', //this is the top title bar of the popover. add some basic css
+      html: 'true', //needed to show html of course
+      content : '<form action="actualizarProf.php" method="POST"><div id="popOverBox"><p>El profesor se ve a borrar de la base de datos:</p><input type="hidden" value="<?php echo $prof_id?>" name="ProfeID"><button type="submit" value="DELETE" name="deleteProf" class="btn btn-danger" >Borrar </button></div></form>' //this is the content of the html box. add the image here or anything you want really.
+});
+});
+</script>
+
 </body>
 </html>
