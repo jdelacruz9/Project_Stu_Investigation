@@ -65,7 +65,7 @@ mysql_query('delete from Aconseja where investig_id = '.$sql_invId[0].' and prof
 
 //}
 
-header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$numEst);
+header('Location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarProfe.php?IDprof'.$id_profe[0]);
 
 
 ?>

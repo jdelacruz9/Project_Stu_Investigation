@@ -79,6 +79,77 @@ $row_prof = mysql_fetch_row($profID_res);
           <a class="navbar-brand" href="http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php">Inicio</a>
         </div>
 		
+		
+		
+	<!-- Proyectos de investigacion-->
+	<div class="modal fade" id="Modalinve" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+		<form class="form-signin" action="investigaProfeCCOM.php" method="POST">
+			<div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				  <h3 class="modal-title" id="myModalCurso">Ingresar Proyecto de Investigaci&oacute;n</h3>
+				</div>
+				<div class="modal-body">
+				 
+				 
+				 <div>
+                    <div> <p></p><p></p><p></p><p></p></div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
+                      </div>
+                      <div class="panel-body">                  
+                         <!--<form class="form-signin"> -->
+                          <!-- Titulo Inv box -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n" name="InvTi">
+                         </div>
+
+                         <!-- ID Inv box 
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"  placeholder="ID de la Investigaci&oacute;n" name="InvID">
+                         </div> -->
+
+                          <!-- Descripcion Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n" name="InvDes">
+                         </div>
+                        
+                          <!-- Producto box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n" name="InvProd"> 
+                         </div>
+
+                         <!-- Profesor Inv box -->
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Correo electr&oacute;nico del aconsejador" name="profEm" value="<?php echo $row_prof[1];?>">
+                         </div>
+						 <!-- Año box  -->
+                         <div class="row" id="input-pass" >
+                            <input type="text" class="form-control"  placeholder="A&ntilde;os en la Investigaci&oacute;n" name="InvYear">
+                         </div>
+						 <input type="hidden" value="<?php echo $numEst;?>" name="NumEstu">
+                         <!-- Compañeros Inv box 
+                         <div class="row" id="input-pass"> 
+                           <input type="text" class="form-control" placeholder="Compa&ntilde;eros de la Investigaci&oacute;n" name="">
+                         </div> -->
+
+                        </div>
+                      </div>
+                    </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Ingresar</button>
+					<button type="submit" class="btn btn-primary" value="Delete" name="eraser">Delete </button>
+				</div>
+				
+			</form>
+		</div> 
+	</div>
+		
+		
+		
 		<form  class="navbar-form navbar-right" role="form">
 					<button rel="drevil" type="button" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="left">
 					Borrar Profesor
