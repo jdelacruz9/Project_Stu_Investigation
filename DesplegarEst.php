@@ -304,7 +304,7 @@ $row_id = mysql_fetch_row($id_res);
 			<div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				  <h3 class="modal-title" id="myModalCurso">Actualizar Cursos</h3>
+				  <h3 class="modal-title" id="myModalCurso">A&ntilde;adir Curso</h3>
 				</div>
 				<div class="modal-body">
 				 <!-- Cursos CCOM -->
@@ -384,7 +384,7 @@ $row_id = mysql_fetch_row($id_res);
 			<div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				  <h3 class="modal-title" id="myModalCurso">Actualizar Estudiante</h3>
+				  <h3 class="modal-title" id="myModalCurso">Actualizar Proyecto de Investigaci&oacute;n</h3>
 				</div>
 				<div class="modal-body">
 				 
@@ -436,7 +436,7 @@ $row_id = mysql_fetch_row($id_res);
                     </div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-					<button type="submit" class="btn btn-primary">Aceptar</button>
+					<button type="submit" class="btn btn-primary">Ingresar</button>
 					<button type="submit" class="btn btn-primary" value="Delete" name="eraser">Delete </button>
 				</div>
 				

@@ -224,43 +224,7 @@ $nombre_res= mysql_query($sql_nombres); //no devuelve el valor, es un pointer
                   <div class="row" id="input-pass"> 
                     <input type="text" class="form-control" placeholder="Correo electr&oacute;nico" name="ModEProf">
                   </div>
-				                  <div>
-                    <div> <p></p><p></p><p></p><p></p></div>
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Proyectos de Investigaci&oacute;n:</h3>
-                      </div>
-                      <div class="panel-body">                  
-                         <form class="form-signin">
-                          <!-- Titulo Inv box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control" placeholder="Titulo de la Investigaci&oacute;n">
-                         </div>
-
-                         <!-- Titulo Inv box -->
-                         <div class="row" id="input-pass" >
-                            <input type="text" class="form-control"     placeholder="ID de la Investigaci&oacute;n">
-                         </div>
-
-                          <!-- Descripcion Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Descripcion de la Investigaci&oacute;n">
-                         </div>
-                        
-                          <!-- Producto box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Producto de la Investigaci&oacute;n">
-                         </div>
-
-                         <!-- Estudiantes Inv box -->
-                         <div class="row" id="input-pass"> 
-                           <input type="text" class="form-control" placeholder="Estudiantes de la Investigaci&oacute;n">
-                         </div>
-                         
-                         
-                        </div>
-                      </div>
-                    </div>
+		
                </form>
             </div>
             <div class="modal-footer">

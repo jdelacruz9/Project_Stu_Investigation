@@ -42,9 +42,29 @@ switch($ccom){
 			break;
     default : $clasif = 0;	
 }
-$estu_update = 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.',est_id="'.$num.'" where est_id="'.$oldnum.'";';
-$estu_up_res = mysql_query($estu_update);
-echo 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.',est_id="'.$num.'" where est_id="'.$oldnum.'";';
-header('location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$num);
+if ($name !=null){
+mysql_query('update Estudiantes set nombre="'.$name.'" where est_id ="'.$oldnum.'";');
+}
+
+if ($email !=null){
+mysql_query('update Estudiantes set email="'.$email.'" where est_id ="'.$oldnum.'";');
+}
+if ($tele !=null){
+mysql_query('update Estudiantes set cell_num="'.$tele.'" where est_id ="'.$oldnum.'";');
+}
+if ($year !=null){
+mysql_query('update Estudiantes set year="'.$year.'" where est_id ="'.$oldnum.'";');
+}
+if ($ccom !=null){
+mysql_query('update Estudiantes set clasificado_ccom="'.$clasif.'" where est_id ="'.$oldnum.'";');
+}
+if ($num !=null){
+mysql_query('update Estudiantes set est_id="'.$num.'" where est_id ="'.$oldnum.'";');
+$oldnum = $num;
+}
+//$estu_update = 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.',est_id="'.$num.'" where est_id="'.$oldnum.'";';
+//$estu_up_res = mysql_query($estu_update);
+//echo 'update Estudiantes set nombre="'.$name.'",email="'.$email.'",cell_num="'.$tele.'",year='.$year.',clasificado_ccom='.$clasif.',est_id="'.$num.'" where est_id="'.$oldnum.'";';
+header('location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/DesplegarEst.php?NumStu='.$oldnum);
 
 ?>

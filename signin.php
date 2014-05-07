@@ -14,7 +14,7 @@ mysql_select_DB($database);
 session_start();
 if(strlen($_SESSION['pass']) > 20 or strlen($_SESSION['user']) > 20)
 {
-header("location: http://ada.uprrp.edu/~ijimenez/Estu_Investigar/login.html");
+header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/projectos/Estu_Investigar/login.html");
 }
 else
 {
@@ -27,7 +27,7 @@ header("location: http://ada.uprrp.edu/~dramirez2/ccom4027/project/investiga.php
 
 }else{ // No rows were returned therefore there were no matches
 
-header("location: http://ada.uprrp.edu/~ijimenez/Estu_Investigar/login.html"); //jump to PORTADA: investiga.php
+header("location: http:http://ada.uprrp.edu/~dramirez2/ccom4027/projectos/Estu_Investigar/login.html"); //jump to PORTADA: investiga.php
 }
 }
 ?>
